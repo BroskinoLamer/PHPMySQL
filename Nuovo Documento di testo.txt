@@ -1,0 +1,17 @@
+$connessione= new mysqli(host,username,password,db);Istanza del costruttore della classe mysqli
+Proprietà comode della classe mysqli
+host_info error 
+num_rows numero di righe del risultato di una query sql, quando una query "SELECT" viene eseguita restituisce un risultato.
+Metodo query()
+$connessione->query(sql);Permette l'esecuzione di una query sql
+
+    $sql="SELECT * FROM phptest";
+    /*Se la query riesce, salva il risultato della query in result*/
+    if($result=$connessione->query($sql)){
+    /*Result è un oggetto che contiene la proprietà num_rows*/
+        if($result->num_rows >0){
+            while($row=$result->fetch_array()){//Row è un array associativo
+                echo "<br>".  $row['id'] . $row['email'] . $row['nome'] . $row['cognome'];  
+            }
+        }
+    }
